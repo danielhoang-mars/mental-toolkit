@@ -719,13 +719,39 @@ input:focus, textarea:focus, select:focus {
   .hero-body { font-size: 14px; }
   .ex-tab { padding: 10px 10px; font-size: 11px; min-height: 44px; }
   .ex-hero-title { font-size: 18px; }
-  .panel-body { padding: 14px; }
+  .detail-panel.open { max-height: 800px; margin-bottom: 20px; }
+  .panel-header { padding: 12px 14px 10px; gap: 10px; }
+  .panel-header-icon { font-size: 18px; }
+  .panel-title { font-size: 14px; }
+  .panel-sub { font-size: 11px; }
+  .panel-body { padding: 10px 12px; }
+  .tip-grid { gap: 6px; margin-bottom: 10px; }
+  .tip-card { padding: 8px 10px; font-size: 12px; line-height: 1.45; }
+  .tip-label { font-size: 12px; margin-bottom: 1px; }
+  .athlete-row { gap: 6px; margin-bottom: 10px; }
+  .athlete-chip { padding: 4px 10px 4px 4px; font-size: 11px; gap: 6px; }
+  .athlete-av { width: 20px; height: 20px; font-size: 8px; }
+  .athlete-fact { font-size: 10px; }
+  .steps-list { gap: 5px; margin-bottom: 10px; }
+  .step-item { font-size: 12px; gap: 8px; }
+  .step-num { width: 20px; height: 20px; font-size: 10px; }
+  .source-line { font-size: 9.5px; padding-top: 8px; }
+  .prog-row { gap: 6px; margin-bottom: 5px; }
+  .prog-label { font-size: 11px; min-width: 80px; }
   .ex-step-body { padding: 16px; }
   .ex-step-header { flex-wrap: wrap; padding: 10px 14px; }
   .stressor-input-row input { font-size: 16px; }
   .warning-col textarea { font-size: 16px; }
   .cards-section { padding: 32px 12px 48px; }
   .cards-grid { gap: 14px; }
+  .thoughts-layout { max-width: 100%; }
+  .scales-svg-wrap { margin: 0 auto 16px; max-width: 280px; }
+  .evidence-cols { gap: 10px; margin-bottom: 14px; }
+  .ev-col { padding: 10px; }
+  .ev-col h4 { font-size: 11px; margin-bottom: 8px; }
+  .ev-input-row input { font-size: 14px; padding: 8px 10px; }
+  .thought-input-main { font-size: 15px; padding: 10px 12px; margin-bottom: 14px; }
+  .positive-thought-wrap { padding-top: 12px; }
 }
 </style>
 </head>
@@ -1122,7 +1148,8 @@ input:focus, textarea:focus, select:focus {
 }
 .thought-input-main:focus { border-color: var(--green-mid); }
 .thought-input-main::placeholder { color: #bbb; font-size: 15px; }
-.scales-svg-wrap { text-align: center; margin-bottom: 20px; }
+.scales-svg-wrap { text-align: center; margin-bottom: 20px; overflow: hidden; }
+.scales-svg-wrap svg { max-width: 100%; height: auto; }
 .evidence-cols { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 20px; }
 .ev-col { border-radius: 10px; padding: 14px; }
 .ev-col.for-col { background: #FAECE7; border: 1.5px solid #F0997B; }
@@ -3552,7 +3579,14 @@ function toggle(id) {
   openPanel(id);
   current = id;
   setTimeout(() => {
-    document.getElementById('panel-'+id).scrollIntoView({behavior:'smooth', block:'nearest'});
+    var panel = document.getElementById('panel-'+id);
+    var btn = document.getElementById('btn-'+id);
+    var target = btn || panel;
+    var rect = target.getBoundingClientRect();
+    var headerH = 56;
+    if (rect.top < headerH || rect.top > window.innerHeight * 0.5) {
+      window.scrollTo({top: window.scrollY + rect.top - headerH - 8, behavior:'smooth'});
+    }
   }, 80);
 }
 
