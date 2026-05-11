@@ -211,17 +211,16 @@ body {
   border-radius: var(--card-radius);
   border: 0.5px solid #e0ddd5;
   background: var(--white);
-  max-height: 0;
-  overflow: hidden;
+  display: none;
   opacity: 0;
-  transition: max-height 0.4s ease, opacity 0.25s ease;
+  transition: opacity 0.25s ease;
   margin-top: 0;
   margin-bottom: 0;
 }
 .detail-panel.open {
-  max-height: 2000px;
+  display: block;
   opacity: 1;
-  margin-top: 0;
+  margin-top: 12px;
   margin-bottom: 32px;
 }
 .panel-header {
@@ -719,7 +718,7 @@ input:focus, textarea:focus, select:focus {
   .hero-body { font-size: 14px; }
   .ex-tab { padding: 10px 10px; font-size: 11px; min-height: 44px; }
   .ex-hero-title { font-size: 18px; }
-  .detail-panel.open { max-height: 800px; margin-bottom: 20px; }
+  .detail-panel.open { max-height: none; margin-bottom: 20px; }
   .panel-header { padding: 12px 14px 10px; gap: 10px; }
   .panel-header-icon { font-size: 18px; }
   .panel-title { font-size: 14px; }
@@ -957,6 +956,9 @@ input:focus, textarea:focus, select:focus {
   resize: vertical; min-height: 70px; outline: none; transition: border-color 0.15s;
 }
 .warning-col textarea:focus { border-color: var(--green-mid); }
+@media (max-width: 900px) {
+  .warning-grid { grid-template-columns: 1fr; }
+}
 .coping-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
 .coping-col { background: var(--faint); border-radius: 10px; padding: 14px; }
 .coping-col label { font-size: 12px; font-weight: 600; display: block; margin-bottom: 8px; }
@@ -1178,6 +1180,18 @@ input:focus, textarea:focus, select:focus {
   color: var(--ink); outline: none; transition: border-color 0.15s; background: var(--green-light);
 }
 .thought-input-positive:focus { border-color: var(--green-mid); }
+
+@media (max-width: 900px) {
+  .evidence-cols { grid-template-columns: 1fr; gap: 10px; }
+  .ev-col { padding: 10px; }
+  .scales-svg-wrap { margin: 0 auto 12px; max-width: 280px; }
+}
+@media (max-width: 520px) {
+  .evidence-cols { gap: 8px; margin-bottom: 10px; }
+  .ev-col { padding: 8px; }
+  .ev-col h4 { font-size: 11px; margin-bottom: 6px; }
+  .ev-input-row input { font-size: 14px; padding: 6px 8px; }
+}
 
 /* ── Print / Save bar ── */
 .ex-action-bar {
