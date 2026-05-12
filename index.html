@@ -1,7 +1,7 @@
 ﻿<html lang="en"><head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>The ISB Mental Toolkit</title>
+<title>The ISB Mental Health Toolkit</title>
 <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&amp;family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&amp;display=swap" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&amp;family=Crimson+Text:ital,wght@0,400;0,600;1,400&amp;display=swap" rel="stylesheet">
 <style>
@@ -757,7 +757,7 @@ input:focus, textarea:focus, select:focus {
 <body>
 
 <header class="site-header">
-  <div class="logo">The ISB Mental Toolkit</div>
+  <div class="logo">The ISB Mental Health Toolkit</div>
 </header>
 
 <div class="privacy-banner" id="privacy-banner">
@@ -767,7 +767,7 @@ input:focus, textarea:focus, select:focus {
       <strong>Completely private. No one is watching.</strong>
       <p style="margin:8px 0">This may look like a website, but it's just an HTML file, a fancy text document. There is no server, no backend, no connection to anything. That means everything you type stays on your device only, saved in your browser so you can come back to it, but never sent or visible to anyone else. You can clear everything at any time.</p>
       <p style="margin:8px 0"><span style="background:#fde2cc;color:#9c4a06;padding:2px 6px;border-radius:4px;font-weight:600">No one monitors, reviews, or has access to your responses.</span></p>
-      <p style="margin:8px 0"><span style="background:#f8d7da;color:#721c24;padding:2px 6px;border-radius:4px;font-weight:600">This also means there are no safeguards or alerts on what you write.</span></p>
+      <p style="margin:8px 0"><span style="background:#fde2cc;color:#9c4a06;padding:2px 6px;border-radius:4px;font-weight:600">If anything feels difficult, support resources are always available via the button below.</span></p>
       <p style="margin:8px 0;font-size:12.5px;color:var(--muted);line-height:1.5">If you feel you need support away from this home screen, look for the <span style="display:inline-flex;align-items:center;gap:3px;background:var(--green-mid);color:#fff;padding:2px 8px;border-radius:10px;font-size:11px;font-weight:600;vertical-align:middle">🤍 Need support?</span> button in the bottom-right corner. It will point you to confidential professional resources.</p>
       <!-- Collapsible support dropdown -->
       <div id="privacy-support-dropdown" style="margin-top: 12px; max-height: 0; overflow: hidden; transition: max-height 0.5s, opacity 0.4s; opacity: 0;" data-open="0">
@@ -797,6 +797,7 @@ input:focus, textarea:focus, select:focus {
 <div class="hero">
   <div class="hero-left">
     <h1 class="hero-title">Your <em>ISB toolkit</em><br>to feeling good<br>at work.</h1>
+    <p class="hero-body" style="font-weight:600;font-size:15px;margin-bottom:8px">Practical tools and resources to help you look after your mental health and wellbeing, right here, right now.</p>
     <p class="hero-body">Eight pillars of wellbeing, each backed by research, grounded in practice, and small enough to act on today. <span class="action-verb-click">Click</span><span class="action-verb-tap">Tap</span> any pillar to explore techniques.</p>
     <p style="font-size:11.5px;color:#fff;font-style:italic;line-height:1.5;margin-top:12px">Brought to you by ISB Wellbeing Champions<br>All support services are confidential · Authored by Daniel Hoang, ISB wellbeing champions, and co-created with GenAI</p>
     <p style="display:inline-block;background:#e74c3c;color:#fff;font-weight:700;font-size:13px;padding:6px 14px;border-radius:6px;margin-top:10px">Please do not share -- Pilot version -- Sharing approval pending</p>
@@ -1352,7 +1353,7 @@ input:focus, textarea:focus, select:focus {
   .pw-wheel-svg-wrap { flex-shrink: 0; }
   .pw-wheel-right { flex: 1; }
   .pw-score-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 4px; margin-bottom: 4px; }
-  .pw-score-item { border: 1px solid #ccc; border-radius: 5px; padding: 3px 7px; font-size: 9pt; }
+  .pw-score-item { border: 1px solid #ccc; border-radius: 5px; padding: 3px 7px; font-size: 9pt; display: flex; justify-content: space-between; align-items: center; }
   .pw-score-item span { color: #5a5a54; font-size: 8.5pt; }
   /* Tighter spacing for wheel exercise */
   .pw-wheel-ex .pw-section { margin-bottom: 6px; }
@@ -1411,7 +1412,7 @@ input:focus, textarea:focus, select:focus {
   <div class="ex-hero">
     <div class="ex-hero-text">
       <h2 class="ex-hero-title">Your Mental Health <em>Toolkit</em></h2>
-      <p class="ex-hero-sub">Three evidence-based exercises to help you understand your stress, reflect on life balance, and challenge unhelpful thoughts. <strong>Completely private:</strong> nothing you write is sent, stored, or reviewed by anyone. No monitoring, no safeguards. This is yours alone.</p>
+      <p class="ex-hero-sub">Three evidence-based exercises to help you understand your stress, reflect on life balance, and challenge unhelpful thoughts. <strong>Completely private:</strong> nothing you write is sent, stored, or reviewed by anyone. This is yours alone.</p>
     </div>
     <div class="ex-hero-pills">
       <div class="ex-hero-pill"><span class="ep-icon">🫙</span>Stress Container</div>
@@ -1706,18 +1707,6 @@ input:focus, textarea:focus, select:focus {
           <button class="ex-btn" onclick="scAddCustomTactic()">Add</button>
         </div>
         <div class="coping-chips" id="sc-custom-tactic-chips" style="margin-top:8px"></div>
-        <div style="margin-top:18px;padding:16px;background:var(--green-light);border-radius:10px;border:1px solid var(--green-border)">
-          <p style="font-size:14px;font-weight:600;color:var(--green-dark);margin-bottom:8px">🤍 If this exercise raised anything difficult, support is available</p>
-          <p style="font-size:12.5px;color:var(--muted);margin-bottom:10px">This exercise can surface feelings that are hard to sit with alone. That is completely normal. You don't have to work through it by yourself. Confidential, professional support is available to you right now.</p>
-          <div style="display:flex;flex-direction:column;gap:8px">
-            <a href="https://team.effem.com/sites/AAP" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:6px;font-size:12.5px;font-weight:500;color:var(--green-dark);text-decoration:none;padding:8px 12px;background:#fff;border-radius:8px;border:1px solid var(--green-border)">🌍 Global Associate Assistance Programme (AAP) →</a>
-            <a href="https://marsunify.service-now.com/myhub?id=microsite_template&amp;topic_id=74eb1db2c32642d05746b55ce001319d" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:6px;font-size:12.5px;font-weight:500;color:var(--green-dark);text-decoration:none;padding:8px 12px;background:#fff;border-radius:8px;border:1px solid var(--green-border)">🧡 Be Well Together - My Hub →</a>
-            <a href="https://marsunify.service-now.com/myhub?id=microsite_template&amp;topic_id=f690f2af47540754c37383e8036d43ce" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:6px;font-size:12.5px;font-weight:500;color:var(--green-dark);text-decoration:none;padding:8px 12px;background:#fff;border-radius:8px;border:1px solid var(--green-border)">📋 Mental Health Resources →</a>
-            <a href="https://team.effem.com/sites/OccupationalHealthAndWellbeingUK/SitePages/Document-Library.aspx?CID=35ab234f-be81-44d9-8a5f-dd2b64465050" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:6px;font-size:12.5px;font-weight:500;color:var(--green-dark);text-decoration:none;padding:8px 12px;background:#fff;border-radius:8px;border:1px solid var(--green-border)">🏥 Occupational Health &amp; Wellbeing UK →</a>
-            <a href="https://team.effem.com/sites/MHFA268/" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:6px;font-size:12.5px;font-weight:500;color:var(--green-dark);text-decoration:none;padding:8px 12px;background:#fff;border-radius:8px;border:1px solid var(--green-border)">🤍 Mental Health First Aiders (MHFA) →</a>
-          </div>
-          <p style="font-size:11.5px;color:var(--muted);margin-top:10px">You can also find a Mental Health First Aider (MHFA) near you. They are trained to listen without judgement and help you identify next steps. See the <strong>Wellbeing Tips</strong> tab → <strong>Support</strong> pillar for the full list.</p>
-        </div>
       </div>
 
       <!-- Completion screen (shown after Done) -->
@@ -1727,7 +1716,7 @@ input:focus, textarea:focus, select:focus {
           <div style="font-size:18px;font-weight:600;color:var(--green-dark);margin-bottom:4px">Exercise complete</div>
           <p style="font-size:13px;color:var(--muted)">Well done for taking the time to reflect. You can print or save your results below.</p>
         </div>
-        <p style="font-size:12.5px;color:var(--muted);margin-top:4px">If this exercise raised anything difficult, support is available on the <strong>Wellbeing Tips</strong> tab → <strong>Support</strong> pillar.</p>
+        <p style="font-size:12.5px;color:var(--muted);margin-top:4px;text-align:center">If this exercise raised anything difficult, support is available on the <strong>Wellbeing Tips</strong> tab → <strong>Support</strong> pillar, or the <strong>Support</strong> section below.</p>
       </div>
 
     </div><!-- end #sc-main -->
@@ -1898,18 +1887,6 @@ input:focus, textarea:focus, select:focus {
 
         </div>
       </div>
-    </div>
-    <div style="margin:18px 0;padding:16px;background:var(--green-light);border-radius:10px;border:1px solid var(--green-border)">
-      <p style="font-size:14px;font-weight:600;color:var(--green-dark);margin-bottom:8px">🤍 If this exercise raised anything difficult, support is available</p>
-      <p style="font-size:12.5px;color:var(--muted);margin-bottom:10px">Reflecting on life balance can bring up feelings you weren't expecting. If any area feels overwhelming, confidential professional support is available to you.</p>
-      <div style="display:flex;flex-direction:column;gap:8px">
-        <a href="https://team.effem.com/sites/AAP" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:6px;font-size:12.5px;font-weight:500;color:var(--green-dark);text-decoration:none;padding:8px 12px;background:#fff;border-radius:8px;border:1px solid var(--green-border)">🌍 Global Associate Assistance Programme (AAP) →</a>
-        <a href="https://marsunify.service-now.com/myhub?id=microsite_template&amp;topic_id=74eb1db2c32642d05746b55ce001319d" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:6px;font-size:12.5px;font-weight:500;color:var(--green-dark);text-decoration:none;padding:8px 12px;background:#fff;border-radius:8px;border:1px solid var(--green-border)">🧡 Be Well Together - My Hub →</a>
-        <a href="https://marsunify.service-now.com/myhub?id=microsite_template&amp;topic_id=f690f2af47540754c37383e8036d43ce" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:6px;font-size:12.5px;font-weight:500;color:var(--green-dark);text-decoration:none;padding:8px 12px;background:#fff;border-radius:8px;border:1px solid var(--green-border)">📋 Mental Health Resources →</a>
-        <a href="https://team.effem.com/sites/OccupationalHealthAndWellbeingUK/SitePages/Document-Library.aspx?CID=35ab234f-be81-44d9-8a5f-dd2b64465050" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:6px;font-size:12.5px;font-weight:500;color:var(--green-dark);text-decoration:none;padding:8px 12px;background:#fff;border-radius:8px;border:1px solid var(--green-border)">🏥 Occupational Health &amp; Wellbeing UK →</a>
-        <a href="https://team.effem.com/sites/MHFA268/" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:6px;font-size:12.5px;font-weight:500;color:var(--green-dark);text-decoration:none;padding:8px 12px;background:#fff;border-radius:8px;border:1px solid var(--green-border)">🤍 Mental Health First Aiders (MHFA) →</a>
-      </div>
-      <p style="font-size:11.5px;color:var(--muted);margin-top:10px">Mental Health First Aiders (MHFAs) can also listen without judgement. See the <strong>Wellbeing Tips</strong> tab → <strong>Support</strong> pillar for the full list.</p>
     </div>
     <div class="ex-action-bar">
       <button class="ex-btn primary" onclick="window.print()">🖨 Print</button>
@@ -2158,11 +2135,11 @@ input:focus, textarea:focus, select:focus {
 
         </div>
         <div class="tip-card" style="background:#EAF3DE;border-color:#C0DD97">
-          <span class="tip-label" style="color:#27500A" data-card="green-escape">Lunch walk<button class="tc-tick" title="Collect this card" aria-label="Collect card" data-card-id="green-escape">✦</button></span>
+          <span class="tip-label" style="color:#27500A" data-card="green-escape">Lunch walk</span>
           <span style="color:#3d3d3a">Stepping outside during the middle of the day does more than break the monotony. Exposure to natural daylight resets your circadian rhythm and gives your energy levels a real lift in the afternoon.</span>
         </div>
         <div class="tip-card" style="background:#EAF3DE;border-color:#C0DD97">
-          <span class="tip-label" style="color:#27500A" data-card="desk-plant-ally">Desk plants<button class="tc-tick" title="Collect this card" aria-label="Collect card" data-card-id="desk-plant-ally">✦</button></span>
+          <span class="tip-label" style="color:#27500A" data-card="desk-plant-ally">Desk plants</span>
           <span style="color:#3d3d3a">A University of Exeter study found that adding plants to your workspace can boost productivity by 15% and improve wellbeing. It also improves concentration and air quality. A small change with a disproportionate effect.</span>
         </div>
         <div class="tip-card" style="background:#EAF3DE;border-color:#C0DD97">
@@ -2186,15 +2163,15 @@ input:focus, textarea:focus, select:focus {
     <div class="panel-body">
       <div class="tip-grid" style="margin-bottom:16px">
         <div class="tip-card" style="background:#EEEDFE;border-color:#CECBF6">
-          <span class="tip-label" style="color:#3C3489" data-card="anchor-wake">Consistency<button class="tc-tick" title="Collect this card" aria-label="Collect card" data-card-id="anchor-wake">✦</button></span>
+          <span class="tip-label" style="color:#3C3489" data-card="anchor-wake">Consistency</span>
           <span style="color:#3d3d3a">Going to bed and waking at the same time every day, including weekends, is the single biggest thing you can do for sleep quality. It anchors your circadian rhythm and reduces the time it takes you to fall asleep.</span>
         </div>
         <div class="tip-card" style="background:#EEEDFE;border-color:#CECBF6">
-          <span class="tip-label" style="color:#3C3489" data-card="cool-the-cave">Cool your room<button class="tc-tick" title="Collect this card" aria-label="Collect card" data-card-id="cool-the-cave">✦</button></span>
+          <span class="tip-label" style="color:#3C3489" data-card="cool-the-cave">Cool your room</span>
           <span style="color:#3d3d3a">Your body needs to drop its core temperature by around 1°C to fall and stay asleep. Keeping your bedroom at 16 to 18°C helps that happen naturally. A room that is too warm is one of the most common causes of broken sleep.</span>
         </div>
         <div class="tip-card" style="background:#EEEDFE;border-color:#CECBF6">
-          <span class="tip-label" style="color:#3C3489" data-card="digital-sundown">Screen cutoff<button class="tc-tick" title="Collect this card" aria-label="Collect card" data-card-id="digital-sundown">✦</button></span>
+          <span class="tip-label" style="color:#3C3489" data-card="digital-sundown">Screen cutoff</span>
           <span style="color:#3d3d3a">Blue light from screens suppresses melatonin, the hormone that tells your brain it is time to sleep. Stopping screens 90 minutes before bed lets melatonin rise naturally and gives your mind time to wind down.</span>
         </div>
         <div class="tip-card" style="background:#EEEDFE;border-color:#CECBF6">
@@ -2217,9 +2194,9 @@ input:focus, textarea:focus, select:focus {
     </div>
     <div class="panel-body">
       <div class="tip-grid">
-        <div class="tip-card" style="background:#FBEAF0;border-color:#F4C0D1"><span class="tip-label" style="color:#72243E" data-card="real-check-in">"How are you, really?"<button class="tc-tick" title="Collect this card" aria-label="Collect card" data-card-id="real-check-in">✦</button></span><span style="color:#3d3d3a">When you ask, actually wait for the answer. Research shows that genuine check-ins build psychological safety, and most people will open up when they sense someone is truly listening, not just being polite.</span></div>
+        <div class="tip-card" style="background:#FBEAF0;border-color:#F4C0D1"><span class="tip-label" style="color:#72243E" data-card="real-check-in">"How are you, really?"</span><span style="color:#3d3d3a">When you ask, actually wait for the answer. Research shows that genuine check-ins build psychological safety, and most people will open up when they sense someone is truly listening, not just being polite.</span></div>
         <div class="tip-card" style="background:#FBEAF0;border-color:#F4C0D1"><span class="tip-label" style="color:#72243E">Reach out first</span><span style="color:#3d3d3a">Studies show people consistently underestimate how much others appreciate being contacted. Most people who reach out to someone who is struggling say they are glad they did. Those who hold back often say they wish they hadn't.</span></div>
-        <div class="tip-card" style="background:#FBEAF0;border-color:#F4C0D1"><span class="tip-label" style="color:#72243E" data-card="shared-table">Eat together<button class="tc-tick" title="Collect this card" aria-label="Collect card" data-card-id="shared-table">✦</button></span><span style="color:#3d3d3a">Sharing a meal is one of the oldest ways humans bond. Oxford researcher Robin Dunbar found that people who eat socially are happier, have stronger friendships, and report higher life satisfaction than those who eat alone.</span></div>
+        <div class="tip-card" style="background:#FBEAF0;border-color:#F4C0D1"><span class="tip-label" style="color:#72243E" data-card="shared-table">Eat together</span><span style="color:#3d3d3a">Sharing a meal is one of the oldest ways humans bond. Oxford researcher Robin Dunbar found that people who eat socially are happier, have stronger friendships, and report higher life satisfaction than those who eat alone.</span></div>
         <div class="tip-card" style="background:#FBEAF0;border-color:#F4C0D1"><span class="tip-label" style="color:#72243E">Know your support at Mars</span><span style="color:#3d3d3a">Mars has 150+ trained Mental Health First Aiders (MHFAs) who can listen without judgement and signpost you to help. You also have a free, confidential Employee Assistance Programme (EAP) through Lifeworks / Telus Health, covering counselling, legal advice, and financial guidance around the clock. Fewer than 10% of eligible employees use their EAP, often simply because they don't know it exists.</span></div>
         <div class="tip-card" style="background:#FBEAF0;border-color:#F4C0D1;border-width:2px"><span class="tip-label" style="color:#72243E">Notice sudden brightness ⚠️</span><span style="color:#3d3d3a">If someone has been struggling for a long time and then suddenly seems calm, at peace, or even cheerful, take it seriously. A sudden lift in mood after prolonged sadness can be a warning sign that someone has made a decision to end their life and feels relieved by it. Check in with them directly and honestly.</span></div>
       </div>
@@ -2238,9 +2215,9 @@ input:focus, textarea:focus, select:focus {
     </div>
     <div class="panel-body">
       <div class="tip-grid">
-        <div class="tip-card" style="background:#FFF8E6;border-color:#FAC775"><span class="tip-label" style="color:#633806" data-card="20-20-20-reset">20-20-20 rule<button class="tc-tick" title="Collect this card" aria-label="Collect card" data-card-id="20-20-20-reset">✦</button></span><span style="color:#3d3d3a">Every 20 minutes, pause your screen, stand for 20 seconds, and look at something 20 feet away. This small habit reduces eye strain, resets your posture, and breaks the pattern of sustained static load on your body.</span></div>
-        <div class="tip-card" style="background:#FFF8E6;border-color:#FAC775"><span class="tip-label" style="color:#633806" data-card="rise-up">Standing desk challenge<button class="tc-tick" title="Collect this card" aria-label="Collect card" data-card-id="rise-up">✦</button></span><span style="color:#3d3d3a">Studies show that aiming for 2 to 4 hours of standing per day reduces back pain, lowers blood sugar spikes after lunch, and is linked to lower long-term cardiovascular risk. If you are starting out, build up by 30 extra minutes per week.</span></div>
-        <div class="tip-card" style="background:#FFF8E6;border-color:#FAC775"><span class="tip-label" style="color:#633806" data-card="walk-the-call">Walk the call<button class="tc-tick" title="Collect this card" aria-label="Collect card" data-card-id="walk-the-call">✦</button></span><span style="color:#3d3d3a">Taking audio-only calls while walking converts dead time into active movement. A 30-minute walk has been shown to produce a measurable improvement in mood and reduce anxiety, regardless of fitness level. Stay aware of your surroundings and choose a safe, familiar route.</span></div>
+        <div class="tip-card" style="background:#FFF8E6;border-color:#FAC775"><span class="tip-label" style="color:#633806" data-card="20-20-20-reset">20-20-20 rule</span><span style="color:#3d3d3a">Every 20 minutes, pause your screen, stand for 20 seconds, and look at something 20 feet away. This small habit reduces eye strain, resets your posture, and breaks the pattern of sustained static load on your body.</span></div>
+        <div class="tip-card" style="background:#FFF8E6;border-color:#FAC775"><span class="tip-label" style="color:#633806" data-card="rise-up">Standing desk challenge</span><span style="color:#3d3d3a">Studies show that aiming for 2 to 4 hours of standing per day reduces back pain, lowers blood sugar spikes after lunch, and is linked to lower long-term cardiovascular risk. If you are starting out, build up by 30 extra minutes per week.</span></div>
+        <div class="tip-card" style="background:#FFF8E6;border-color:#FAC775"><span class="tip-label" style="color:#633806" data-card="walk-the-call">Walk the call</span><span style="color:#3d3d3a">Taking audio-only calls while walking converts dead time into active movement. A 30-minute walk has been shown to produce a measurable improvement in mood and reduce anxiety, regardless of fitness level. Stay aware of your surroundings and choose a safe, familiar route.</span></div>
         <div class="tip-card" style="background:#FFF8E6;border-color:#FAC775"><span class="tip-label" style="color:#633806">Desk stretches</span><span style="color:#3d3d3a">Spending long periods at a desk shortens your hip flexors, tightens your chest, and strains your neck. Simple movements like neck rolls, shoulder shrugs, and wrist circles every 90 minutes significantly reduce the tension headaches that come from prolonged sitting.</span></div>
       </div>
       <div class="athlete-row">
@@ -2254,12 +2231,12 @@ input:focus, textarea:focus, select:focus {
   <div class="detail-panel" id="panel-gratitude">
     <div class="panel-header" style="background:#E6F1FB;border-color:#B5D4F4">
       <span class="panel-header-icon">🙏</span>
-      <div><div class="panel-title">Gratitude</div><div class="panel-sub">The #1 reason people leave is their manager</div></div>
+      <div><div class="panel-title">Gratitude</div><div class="panel-sub">Employees worldwide report a good manager is the #1 reason they stay or leave</div></div>
     </div>
     <div class="panel-body">
       <div class="tip-grid">
-        <div class="tip-card" style="background:#E6F1FB;border-color:#85B7EB"><span class="tip-label" style="color:#0C447C" data-card="specific-shout-out">Give specific praise<button class="tc-tick" title="Collect this card" aria-label="Collect card" data-card-id="specific-shout-out">✦</button></span><span style="color:#3d3d3a">"You did X and it made Y happen" lands far more than a generic "well done". Specific feedback is more motivating, more memorable, and more meaningful. This applies to yourself too. Take a moment to notice what you actually did well today.</span></div>
-        <div class="tip-card" style="background:#E6F1FB;border-color:#85B7EB"><span class="tip-label" style="color:#0C447C" data-card="three-good-things">Gratitude journal<button class="tc-tick" title="Collect this card" aria-label="Collect card" data-card-id="three-good-things">✦</button></span><span style="color:#3d3d3a">A study by Emmons and McCullough found that writing down three specific things you are grateful for each day shifts your brain's default attention toward positive experiences within about three weeks. Specificity matters more than length.</span></div>
+        <div class="tip-card" style="background:#E6F1FB;border-color:#85B7EB"><span class="tip-label" style="color:#0C447C" data-card="specific-shout-out">Give specific praise</span><span style="color:#3d3d3a">"You did X and it made Y happen" lands far more than a generic "well done". Specific feedback is more motivating, more memorable, and more meaningful. This applies to yourself too. Take a moment to notice what you actually did well today.</span></div>
+        <div class="tip-card" style="background:#E6F1FB;border-color:#85B7EB"><span class="tip-label" style="color:#0C447C" data-card="three-good-things">Gratitude journal</span><span style="color:#3d3d3a">A study by Emmons and McCullough found that writing down three specific things you are grateful for each day shifts your brain's default attention toward positive experiences within about three weeks. Specificity matters more than length.</span></div>
         <div class="tip-card" style="background:#E6F1FB;border-color:#85B7EB"><span class="tip-label" style="color:#0C447C">The 5:1 ratio</span><span style="color:#3d3d3a">John Gottman's research found that high-performing relationships, whether personal or professional, maintain roughly five positive interactions for every one critical or negative one. Teams that fall below this ratio tend to have higher turnover and lower output.</span></div>
       </div>
       <div class="athlete-row">
@@ -2279,9 +2256,9 @@ input:focus, textarea:focus, select:focus {
       <p style="font-size:12.5px;color:var(--muted);margin-bottom:14px">Switching to a different screen is not a break. Your brain needs genuine rest, not just a change of stimulation. Follow these steps for a break that actually restores you.</p>
       <div class="steps-list">
         <div class="step-item"><div class="step-num" style="background:#E1F5EE;color:#085041;border-color:#5DCAA5">1</div><div><span class="step-label" style="color:#085041">Put the phone in your bag</span>Research from the University of Texas found that the mere presence of your phone on your desk reduces your available cognitive capacity, even if you never touch it. Out of sight genuinely helps.</div></div>
-        <div class="step-item"><div class="step-num" style="background:#E1F5EE;color:#085041;border-color:#5DCAA5">2</div><div><span class="step-label" style="color:#085041" data-card="full-stop">Change your physical location<button class="tc-tick" title="Collect this card" aria-label="Collect card" data-card-id="full-stop">✦</button></span>Stand up, go outside, or move to a different room. Changing where you are helps your brain register that the current task is genuinely on pause, not just minimised.</div></div>
+        <div class="step-item"><div class="step-num" style="background:#E1F5EE;color:#085041;border-color:#5DCAA5">2</div><div><span class="step-label" style="color:#085041" data-card="full-stop">Change your physical location</span>Stand up, go outside, or move to a different room. Changing where you are helps your brain register that the current task is genuinely on pause, not just minimised.</div></div>
         <div class="step-item"><div class="step-num" style="background:#E1F5EE;color:#085041;border-color:#5DCAA5">3</div><div><span class="step-label" style="color:#085041">Choose soft fascination</span>Look at something moving. Trees, people passing, water. Psychologists call this soft fascination, a form of gentle, effortless attention that lets your mind rest without switching off completely.</div></div>
-        <div class="step-item"><div class="step-num" style="background:#E1F5EE;color:#085041;border-color:#5DCAA5">4</div><div><span class="step-label" style="color:#085041" data-card="box-breath">Take 3 slow breaths before returning<button class="tc-tick" title="Collect this card" aria-label="Collect card" data-card-id="box-breath">✦</button></span>Box breathing (4 seconds in, 4 seconds hold, 4 seconds out) signals the nervous system to return to a focused, calm state rather than a stressed one. It takes less than a minute.</div></div>
+        <div class="step-item"><div class="step-num" style="background:#E1F5EE;color:#085041;border-color:#5DCAA5">4</div><div><span class="step-label" style="color:#085041" data-card="box-breath">Take 3 slow breaths before returning</span>Box breathing (4 seconds in, 4 seconds hold, 4 seconds out) signals the nervous system to return to a focused, calm state rather than a stressed one. It takes less than a minute.</div></div>
         <div class="step-item"><div class="step-num" style="background:#E1F5EE;color:#085041;border-color:#5DCAA5">5</div><div><span class="step-label" style="color:#085041">Time it: 5 to 15 minutes every 90 minutes</span>Your brain operates in roughly 90-minute cycles of sustained focus. A short break at the end of each cycle keeps your performance consistent throughout the day rather than declining by the afternoon.</div></div>
       </div>
       <div style="padding:12px 14px;border-radius:8px;background:#E1F5EE;border:0.5px solid #5DCAA5;font-size:12.5px;color:#085041;margin-bottom:14px">
@@ -2303,8 +2280,8 @@ input:focus, textarea:focus, select:focus {
     <div class="panel-body">
       <div class="tip-grid">
         <div class="tip-card" style="background:#FAECE7;border-color:#F0997B"><span class="tip-label" style="color:#712B13">Eat little and often</span><span style="color:#3d3d3a">Keeping your blood sugar steady throughout the day prevents the mid-afternoon energy crash that many people mistake for needing more caffeine. Eating regularly, with balanced meals and snacks, maintains concentration and mood more reliably than willpower alone.</span></div>
-        <div class="tip-card" style="background:#FAECE7;border-color:#F0997B"><span class="tip-label" style="color:#712B13" data-card="feed-your-mood">The gut-brain axis<button class="tc-tick" title="Collect this card" aria-label="Collect card" data-card-id="feed-your-mood">✦</button></span><span style="color:#3d3d3a">Around 95% of the body's serotonin is produced in the gut, not the brain. Foods rich in fibre, and fermented foods like yoghurt and kefir, support the gut microbiome, which directly influences your mood, sleep, and stress response.</span></div>
-        <div class="tip-card" style="background:#FAECE7;border-color:#F0997B"><span class="tip-label" style="color:#712B13" data-card="water-before-coffee">Hydrate first<button class="tc-tick" title="Collect this card" aria-label="Collect card" data-card-id="water-before-coffee">✦</button></span><span style="color:#3d3d3a">Even mild dehydration, just a 1 to 2% drop in fluid levels, measurably affects mood, increases fatigue, and makes tasks feel harder. Drinking a glass of water before your morning coffee is one of the simplest ways to start the day sharp <em>(Armstrong et al., 2012)</em>.</span></div>
+        <div class="tip-card" style="background:#FAECE7;border-color:#F0997B"><span class="tip-label" style="color:#712B13" data-card="feed-your-mood">The gut-brain axis</span><span style="color:#3d3d3a">Around 95% of the body's serotonin is produced in the gut, not the brain. Foods rich in fibre, and fermented foods like yoghurt and kefir, support the gut microbiome, which directly influences your mood, sleep, and stress response.</span></div>
+        <div class="tip-card" style="background:#FAECE7;border-color:#F0997B"><span class="tip-label" style="color:#712B13" data-card="water-before-coffee">Hydrate first</span><span style="color:#3d3d3a">Even mild dehydration, just a 1 to 2% drop in fluid levels, measurably affects mood, increases fatigue, and makes tasks feel harder. Drinking a glass of water before your morning coffee is one of the simplest ways to start the day sharp <em>(Armstrong et al., 2012)</em>.</span></div>
         <div class="tip-card" style="background:#FAECE7;border-color:#F0997B"><span class="tip-label" style="color:#712B13">Omega-3 for cognition</span><span style="color:#3d3d3a">Oily fish like salmon, mackerel, and sardines, eaten twice a week, provide omega-3 fatty acids that support brain cell structure and have been shown to reduce symptoms of low mood and anxiety.</span></div>
         <div class="tip-card" style="background:#FAECE7;border-color:#F0997B"><span class="tip-label" style="color:#712B13">Beat the glucose spike</span><span style="color:#3d3d3a">A 10-minute walk after eating significantly reduces the blood sugar spike from your meal. This prevents the energy dip that typically follows lunch and helps you stay focused into the afternoon.</span></div>
       </div>
@@ -3028,24 +3005,24 @@ input:focus, textarea:focus, select:focus {
             <!-- Up-left: Relationship (210°) -->
             <line x1="160" y1="160" x2="47.4" y2="95" stroke="#ccc" stroke-width="0.8"></line>
             <!-- Axis labels -->
-            <text x="160" y="22" text-anchor="middle" font-size="10" font-weight="600" fill="#9c4a06">Sport</text>
+            <text x="160" y="22" text-anchor="middle" font-size="10" font-weight="600" fill="#9c4a06"></text>
             <text x="282" y="93" text-anchor="start" font-size="10" font-weight="600" fill="#9c4a06">Friends</text>
             <text x="282" y="232" text-anchor="start" font-size="10" font-weight="600" fill="#9c4a06">Family</text>
             <text x="160" y="308" text-anchor="middle" font-size="10" font-weight="600" fill="#9c4a06">Work</text>
             <text x="38" y="232" text-anchor="end" font-size="10" font-weight="600" fill="#9c4a06">Hobbies</text>
-            <text x="38" y="93" text-anchor="end" font-size="10" font-weight="600" fill="#9c4a06">Relationship</text>
+            <text x="38" y="93" text-anchor="end" font-size="10" font-weight="600" fill="#9c4a06"></text>
           </svg>
         </div>
         <!-- Scores + instruction -->
         <div class="pw-wheel-right">
           <div class="pw-q-label" style="margin-bottom:5px">Rate each area 0–10, then plot your shape:</div>
           <div class="pw-score-grid">
-            <div class="pw-score-item">Sport &nbsp;<span>___/10</span></div>
-            <div class="pw-score-item">Friends &nbsp;<span>___/10</span></div>
-            <div class="pw-score-item">Family &nbsp;<span>___/10</span></div>
-            <div class="pw-score-item">Work &nbsp;<span>___/10</span></div>
-            <div class="pw-score-item">Hobbies &nbsp;<span>___/10</span></div>
-            <div class="pw-score-item">Relationship &nbsp;<span>___/10</span></div>
+            <div class="pw-score-item"><span class="pw-score-label">________</span><span>___/10</span></div>
+            <div class="pw-score-item"><span class="pw-score-label">Friends</span><span>___/10</span></div>
+            <div class="pw-score-item"><span class="pw-score-label">Family</span><span>___/10</span></div>
+            <div class="pw-score-item"><span class="pw-score-label">Work</span><span>___/10</span></div>
+            <div class="pw-score-item"><span class="pw-score-label">Hobbies</span><span>___/10</span></div>
+            <div class="pw-score-item"><span class="pw-score-label">________</span><span>___/10</span></div>
           </div>
         </div>
       </div>
@@ -4829,7 +4806,7 @@ function scAnimFill5(targetH, snap) {
 </div>
 
 <footer class="site-footer">
-  The ISB Mental Toolkit. Thank you to all contributors!<br>
+  The ISB Mental Health Toolkit. Thank you to all contributors!<br>
   All support services are confidential · Authored by Daniel Hoang, ISB wellbeing champions, and co-created with GenAI
 </footer>
 
