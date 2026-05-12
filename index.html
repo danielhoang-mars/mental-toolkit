@@ -209,14 +209,11 @@ body {
   border-radius: var(--card-radius);
   border: 0.5px solid #e0ddd5;
   background: var(--white);
-  display: none;
   opacity: 0;
-  transition: opacity 0.25s ease;
   margin-top: 0;
   margin-bottom: 0;
 }
 .detail-panel.open {
-  display: block;
   opacity: 1;
   margin-top: 12px;
   margin-bottom: 32px;
@@ -439,28 +436,50 @@ body {
 .hero::before {
   content: '';
   position: absolute;
-  top: -100px; right: -100px;
-  width: 560px; height: 560px;
-  border-radius: 50%;
-  background: rgba(255,255,255,0.04);
+  top: -60px; right: -40px;
+  width: 500px; height: 500px;
+  border-radius: 45% 55% 50% 50% / 55% 45% 55% 45%;
+  background: rgba(255,180,80,0.28);
   pointer-events: none;
+  filter: blur(60px);
+  z-index: 1;
+  animation: hero-flow-1 10.5s ease-in-out infinite;
 }
 .hero::after {
   content: '';
   position: absolute;
-  bottom: -120px; left: 8%;
-  width: 420px; height: 420px;
-  border-radius: 50%;
-  background: rgba(46,204,113,0.07);
+  bottom: -40px; left: -20px;
+  width: 450px; height: 450px;
+  border-radius: 55% 45% 50% 50% / 45% 55% 45% 55%;
+  background: rgba(255,210,130,0.22);
   pointer-events: none;
+  filter: blur(70px);
+  z-index: 1;
+  animation: hero-flow-2 14.5s ease-in-out infinite;
 }
+@keyframes hero-flow-1 {
+  0%   { transform: translate(0, 0) rotate(0deg) scale(1); border-radius: 45% 55% 50% 50% / 55% 45% 55% 45%; }
+  25%  { transform: translate(-40px, 30px) rotate(3deg) scale(1.05); border-radius: 55% 45% 55% 45% / 45% 55% 45% 55%; }
+  50%  { transform: translate(20px, -20px) rotate(-2deg) scale(0.97); border-radius: 50% 50% 45% 55% / 55% 50% 50% 45%; }
+  75%  { transform: translate(30px, 20px) rotate(2deg) scale(1.03); border-radius: 45% 50% 55% 50% / 50% 45% 55% 50%; }
+  100% { transform: translate(0, 0) rotate(0deg) scale(1); border-radius: 45% 55% 50% 50% / 55% 45% 55% 45%; }
+}
+@keyframes hero-flow-2 {
+  0%   { transform: translate(0, 0) rotate(0deg) scale(1); border-radius: 55% 45% 50% 50% / 45% 55% 45% 55%; }
+  25%  { transform: translate(35px, -25px) rotate(-3deg) scale(1.04); border-radius: 45% 55% 45% 55% / 55% 45% 55% 45%; }
+  50%  { transform: translate(-30px, 20px) rotate(2deg) scale(0.96); border-radius: 50% 45% 55% 50% / 45% 55% 50% 50%; }
+  75%  { transform: translate(-15px, -30px) rotate(-1deg) scale(1.06); border-radius: 55% 50% 45% 50% / 50% 55% 50% 45%; }
+  100% { transform: translate(0, 0) rotate(0deg) scale(1); border-radius: 55% 45% 50% 50% / 45% 55% 45% 55%; }
+}
+.hero-left, .hero-stat { position: relative; z-index: 2; }
 .hero-eyebrow { color: #8EE3A8; margin-bottom: 16px; }
 .hero-title { color: #fff; font-size: 50px; }
 .hero-title em { color: #f5a54d; }
 .hero-body { color: rgba(255,255,255,0.78); font-size: 16px; }
-.hero-num { color: #ffffff; font-size: 72px; }
-.hero-num-label { color: rgba(255,255,255,0.6); font-size: 13px; margin-top: 6px; }
-.hero-stat { text-align: right; flex-shrink: 0; padding: 8px 0; }
+.hero-num { color: #ffffff; font-size: 44px; }
+.hero-num-label { color: rgba(255,255,255,0.78); font-size: 13px; margin-top: 6px; }
+.hero-stats-row { display: flex; gap: 32px; flex-shrink: 0; align-items: flex-end; }
+.hero-stat { text-align: center; flex-shrink: 0; padding: 8px 0; }
 
 /* ── Body background ── */
 body { background: var(--faint); }
@@ -584,8 +603,11 @@ body { background: var(--faint); }
 /* ── Input focus ── */
 input:focus, textarea:focus, select:focus {
   border-color: var(--green-mid) !important;
-  box-shadow: 0 0 0 3px rgba(39,174,96,0.12) !important;
-  outline: none !important;
+  box-shadow: 0 0 0 3px rgba(232,120,42,0.15) !important;
+}
+input:focus-visible, textarea:focus-visible, select:focus-visible {
+  outline: 2px solid var(--green-mid);
+  outline-offset: 1px;
 }
 .stressor-input-row input:focus,
 .coping-input-row input:focus,
@@ -657,12 +679,19 @@ input:focus, textarea:focus, select:focus {
 @media (max-width: 900px) {
   .privacy-banner { padding: 12px 16px; }
   .privacy-text { font-size: 13px; }
+  .privacy-banner .privacy-inner { flex-direction: row; }
+}
+@media (max-width: 520px) {
+  .privacy-banner { padding: 10px 12px; max-height: 70vh; overflow-y: auto; -webkit-overflow-scrolling: touch; }
+  .privacy-text { font-size: 12px; }
+  .privacy-text p { margin: 6px 0 !important; }
+  .privacy-text a { font-size: 11.5px !important; padding: 8px 10px !important; word-break: break-word; }
 }
 
 /* ── Footer: dark green ── */
 .site-footer {
   background: #9c4a06;
-  color: rgba(255,255,255,0.42);
+  color: rgba(255,255,255,0.78);
   border-top: none;
   padding: 36px 32px;
 }
@@ -673,8 +702,10 @@ input:focus, textarea:focus, select:focus {
   .hero { padding: 36px 20px 32px; flex-direction: column; align-items: flex-start; }
   .hero::before, .hero::after { display: none; }
   .hero-title { font-size: 32px; }
+  .hero-body { font-size: 14px !important; }
+  .hero-stats-row { justify-content: flex-start; gap: 24px; }
   .hero-stat { text-align: left; }
-  .hero-num { font-size: 48px; }
+  .hero-num { font-size: 32px; }
   .main { padding: 24px 10px 60px; }
   .pillars-wrap { grid-template-columns: repeat(4, 1fr); gap: 4px; }
   .tip-grid { grid-template-columns: 1fr; }
@@ -684,8 +715,12 @@ input:focus, textarea:focus, select:focus {
   .exercises-section { padding: 24px 16px 32px; }
   .support-section-always { padding: 24px 16px 32px !important; }
   .support-section-always > div > div { padding: 18px 16px !important; }
-  .ex-tab-bar { flex-wrap: wrap; gap: 2px; }
-  .ex-tab { padding: 10px 14px; font-size: 12px; min-height: 44px; }
+  .support-section-always a { font-size: 12px !important; padding: 10px 12px !important; word-break: break-word !important; }
+  .ex-tab-bar { flex-wrap: nowrap; gap: 0; overflow-x: auto; -webkit-overflow-scrolling: touch; scrollbar-width: none; -ms-overflow-style: none; padding-left: 28px; padding-right: 28px; }
+  .ex-tab-bar::-webkit-scrollbar { display: none; }
+  .ex-tab { padding: 10px 14px; font-size: 12px; min-height: 44px; white-space: nowrap; flex-shrink: 0; }
+  .ex-tab-scroll-btn { display: flex; }
+  .ex-tab-bar > div[style*="margin-left:auto"] { display: none; }
   .ex-hero { padding: 20px; flex-direction: column; gap: 16px; }
   .ex-hero-pills { gap: 6px; }
   .ex-hero-pill { padding: 6px 10px; font-size: 11px; }
@@ -715,8 +750,10 @@ input:focus, textarea:focus, select:focus {
   .pillar-icon { font-size: 24px; }
   .pillar-label { font-size: 11px; }
   .hero-title { font-size: 26px; }
-  .hero-body { font-size: 14px; }
-  .ex-tab { padding: 10px 10px; font-size: 11px; min-height: 44px; }
+  .hero-body { font-size: 13px !important; line-height: 1.5 !important; }
+  .hero-left p[style*="font-size:11.5px"] { font-size: 10.5px !important; }
+  .hero-left p[style*="font-size:13px"] { font-size: 11px !important; }
+  .ex-tab { padding: 10px 12px; font-size: 11px; min-height: 44px; white-space: nowrap; flex-shrink: 0; }
   .ex-hero-title { font-size: 18px; }
   .detail-panel.open { max-height: none; margin-bottom: 20px; }
   .panel-header { padding: 12px 14px 10px; gap: 10px; }
@@ -765,9 +802,9 @@ input:focus, textarea:focus, select:focus {
     <div class="privacy-icon">🔒</div>
     <div class="privacy-text">
       <strong>Completely private. No one is watching.</strong>
-      <p style="margin:8px 0">This may look like a website, but it's just an HTML file, a fancy text document. There is no server, no backend, no connection to anything. That means everything you type stays on your device only, saved in your browser so you can come back to it, but never sent or visible to anyone else. You can clear everything at any time.</p>
-      <p style="margin:8px 0"><span style="background:#fde2cc;color:#9c4a06;padding:2px 6px;border-radius:4px;font-weight:600">No one monitors, reviews, or has access to your responses.</span></p>
-      <p style="margin:8px 0"><span style="background:#fde2cc;color:#9c4a06;padding:2px 6px;border-radius:4px;font-weight:600">If anything feels difficult, support resources are always available via the button below.</span></p>
+      <p style="margin:8px 0">This may look like a website, but it's just an HTML file, a fancy text document similar to a PDF. There is no server, no backend, no connection to anything. That means everything you type stays on your device only, saved in your browser so you can come back to it, but never sent or visible to anyone else. You can clear everything at any time.</p>
+      <p style="margin:8px 0"><span style="background:#d4edda;color:#155724;padding:2px 6px;border-radius:4px;font-weight:600">No one monitors, reviews, or has access to your responses.</span></p>
+      <p style="margin:8px 0"><span style="background:#f8d7da;color:#721c24;padding:2px 6px;border-radius:4px;font-weight:600">At the same time, there are no safeguards or monitoring of your answers.</span></p>
       <p style="margin:8px 0;font-size:12.5px;color:var(--muted);line-height:1.5">If you feel you need support away from this home screen, look for the <span style="display:inline-flex;align-items:center;gap:3px;background:var(--green-mid);color:#fff;padding:2px 8px;border-radius:10px;font-size:11px;font-weight:600;vertical-align:middle">🤍 Need support?</span> button in the bottom-right corner. It will point you to confidential professional resources.</p>
       <!-- Collapsible support dropdown -->
       <div id="privacy-support-dropdown" style="margin-top: 12px; max-height: 0; overflow: hidden; transition: max-height 0.5s, opacity 0.4s; opacity: 0;" data-open="0">
@@ -785,9 +822,8 @@ input:focus, textarea:focus, select:focus {
         </div>
       </div>
       <!-- Full-width toggle bar -->
-      <button id="privacy-support-toggle" onclick="togglePrivacySupport()" style="margin-top:10px;width:100%;background:rgba(255,255,255,0.5);border:1px solid var(--green-border);border-radius:8px;padding:6px 0;font-size:12px;color:var(--green-dark);cursor:pointer;display:flex;align-items:center;justify-content:center;gap:6px;transition:background 0.2s">
-        <span id="privacy-toggle-label">🤍 Show support resources</span>
-        <span id="privacy-toggle-arrow" style="transition: transform 0.3s;">▼</span>
+      <button id="privacy-support-toggle" onclick="togglePrivacySupport()" aria-label="Toggle support resources" style="margin-top:2px;margin-bottom:-6px;background:none;border:none;font-size:12px;color:var(--muted);cursor:pointer;display:flex;align-items:center;justify-content:center;padding:2px 0;margin-left:auto;margin-right:auto">
+        <span id="privacy-toggle-arrow" style="transition: transform 0.3s; display:inline-block;">▼</span>
       </button>
     </div>
     <button class="privacy-close" onclick="document.getElementById('privacy-banner').classList.add('privacy-hidden')" aria-label="Close">×</button>
@@ -796,15 +832,24 @@ input:focus, textarea:focus, select:focus {
 
 <div class="hero">
   <div class="hero-left">
-    <h1 class="hero-title">Your <em>ISB toolkit</em><br>to feeling good<br>at work.</h1>
-    <p class="hero-body" style="font-weight:600;font-size:15px;margin-bottom:8px">Practical tools and resources to help you look after your mental health and wellbeing, right here, right now.</p>
-    <p class="hero-body">Eight pillars of wellbeing, each backed by research, grounded in practice, and small enough to act on today. <span class="action-verb-click">Click</span><span class="action-verb-tap">Tap</span> any pillar to explore techniques.</p>
-    <p style="font-size:11.5px;color:#fff;font-style:italic;line-height:1.5;margin-top:12px">Brought to you by ISB Wellbeing Champions<br>All support services are confidential · Authored by Daniel Hoang, ISB wellbeing champions, and co-created with GenAI</p>
-    <p style="display:inline-block;background:#e74c3c;color:#fff;font-weight:700;font-size:13px;padding:6px 14px;border-radius:6px;margin-top:10px">Please do not share -- Pilot version -- Sharing approval pending</p>
+    <h1 class="hero-title reveal-el">Your <em>ISB toolkit</em><br>to feeling <span id="hero-rotate-word" class="hero-rotate-word">good</span><br>at work.</h1>
+    <p class="hero-body reveal-el" style="font-size:15.5px;line-height:1.6">Practical, research-backed tools to look after your mental health at work. Small enough to act on today.</p>
+    <p class="reveal-el" style="font-size:11.5px;color:#fff;font-style:italic;line-height:1.5;margin-top:12px">Brought to you by ISB Wellbeing Champions<br>All support services are confidential<br>Authored by Daniel Hoang, ISB wellbeing champions, and co-created with GenAI</p>
+    <p class="reveal-el" style="display:inline-block;background:#e74c3c;color:#fff;font-weight:700;font-size:13px;padding:6px 14px;border-radius:6px;margin-top:10px">Please do not share -- Pilot version -- Sharing approval pending</p>
   </div>
-  <div class="hero-stat">
-    <div class="hero-num">8</div>
-    <div class="hero-num-label">wellbeing pillars</div>
+  <div class="hero-stats-row">
+    <div class="hero-stat reveal-el" data-reveal-delay="200">
+      <div class="hero-num">8</div>
+      <div class="hero-num-label">wellbeing pillars</div>
+    </div>
+    <div class="hero-stat reveal-el" data-reveal-delay="400">
+      <div class="hero-num">25</div>
+      <div class="hero-num-label">practical tips</div>
+    </div>
+    <div class="hero-stat reveal-el" data-reveal-delay="600">
+      <div class="hero-num">3</div>
+      <div class="hero-num-label">science-based exercises</div>
+    </div>
   </div>
 </div>
 
@@ -834,11 +879,46 @@ input:focus, textarea:focus, select:focus {
 }
 
 /* ── Tab bar ── */
+.ex-tab-bar-wrap {
+  position: relative;
+  display: flex;
+  align-items: stretch;
+}
+.ex-tab-scroll-btn {
+  display: none;
+  position: absolute;
+  top: 0;
+  bottom: 1.5px;
+  width: 32px;
+  z-index: 2;
+  border: none;
+  cursor: pointer;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+  color: var(--muted);
+  padding: 0;
+  font-family: 'DM Sans', sans-serif;
+}
+.ex-tab-scroll-btn:active { color: var(--green); }
+.ex-tab-scroll-left {
+  left: 0;
+  background: linear-gradient(to right, var(--white) 60%, transparent);
+  border-radius: 8px 0 0 0;
+}
+.ex-tab-scroll-right {
+  right: 0;
+  background: linear-gradient(to left, var(--white) 60%, transparent);
+  border-radius: 0 8px 0 0;
+}
+.ex-tab-scroll-btn.hidden { opacity: 0; pointer-events: none; }
 .ex-tab-bar {
   display: flex;
   gap: 4px;
   margin-bottom: 0;
   border-bottom: 1.5px solid #e0ddd5;
+  flex: 1;
+  min-width: 0;
 }
 .ex-tab {
   padding: 10px 20px;
@@ -1408,38 +1488,65 @@ input:focus, textarea:focus, select:focus {
 
 <div class="exercises-section">
 
-  <!-- ── Wellbeing hero ── -->
-  <div class="ex-hero">
-    <div class="ex-hero-text">
-      <h2 class="ex-hero-title">Your Mental Health <em>Toolkit</em></h2>
-      <p class="ex-hero-sub">Three evidence-based exercises to help you understand your stress, reflect on life balance, and challenge unhelpful thoughts. <strong>Completely private:</strong> nothing you write is sent, stored, or reviewed by anyone. This is yours alone.</p>
-    </div>
-    <div class="ex-hero-pills">
-      <div class="ex-hero-pill"><span class="ep-icon">🫙</span>Stress Container</div>
-      <div class="ex-hero-pill"><span class="ep-icon">⭕</span>Wheel of Life</div>
-      <div class="ex-hero-pill"><span class="ep-icon">⚖️</span>Thoughts on Trial</div>
-      <div class="ex-hero-pill"><span class="ep-icon">🌱</span>Wellbeing Tips</div>
+  <!-- ── Wellbeing hero (redesigned) ── -->
+  <div class="ex-hero" style="flex-direction:column;align-items:center;text-align:center;padding:48px 32px 20px;gap:16px;border:none;background:transparent">
+    <div class="ex-hero-text" style="min-width:auto;max-width:540px">
+      <h2 class="ex-hero-title reveal-el" style="font-size:28px;margin-bottom:12px">Your Mental Health <em>Toolkit</em></h2>
+      <p class="ex-hero-sub reveal-el" style="max-width:480px;margin:0 auto;font-size:14px;line-height:1.7">Three evidence-based exercises to help you understand your stress, reflect on life balance, and challenge unhelpful thoughts.<br><span style="display:inline-block;margin-top:8px;font-size:12px;color:var(--green-mid);font-weight:500;letter-spacing:0.06em;text-transform:uppercase">Completely private · Nothing is sent or stored</span></p>
     </div>
   </div>
 
-  <div class="ex-tab-bar">
-    <button class="ex-tab active" onclick="switchEx('stress',this)">🫙 Stress Container</button>
-    <button class="ex-tab" onclick="switchEx('wheel',this)">⭕ Wheel of Life</button>
-    <button class="ex-tab" onclick="switchEx('thoughts',this)">⚖️ Thoughts on Trial</button>
-    <button class="ex-tab" onclick="switchEx('wellbeing',this)">🌱 Wellbeing Tips</button>
-    <button class="ex-tab tc-collectibles-tab" onclick="switchEx('collectibles',this)" data-tc-tab="">✦ Collectibles <span id="tc-tab-badge" style="background:#c8882a;color:#1a0f02;font-size:9px;font-weight:700;padding:1px 6px;border-radius:8px;margin-left:3px;vertical-align:middle">0/16</span></button>
-    <div style="margin-left:auto;display:flex;align-items:center;padding-bottom:2px">
-      <button id="tc-reset-btn" onclick="tcResetConfirm()" style="font-size: 11px; color: rgb(153, 153, 153); background: none; border: 1px solid rgb(208, 204, 196); border-radius: 6px; padding: 5px 12px; cursor: pointer; transition: color 0.15s, border-color 0.15s; font-family: &quot;DM Sans&quot;, sans-serif;" onmouseover="this.style.color='#c83535';this.style.borderColor='#c83535'" onmouseout="this.style.color='#999';this.style.borderColor='#d0ccc4'">↺ Reset all progress</button>
-      <span id="tc-reset-confirm" style="display:none;align-items:center;gap:6px">
-        <span style="font-size:11px;color:#c83535;font-weight:600;font-family:'DM Sans',sans-serif">Are you sure?</span>
-        <button onclick="tcResetExecute()" style="font-size:11px;color:#fff;background:#c83535;border:none;border-radius:6px;padding:5px 12px;cursor:pointer;font-family:'DM Sans',sans-serif">Yes, reset</button>
-        <button onclick="tcResetCancel()" style="font-size:11px;color:#666;background:none;border:1px solid #d0ccc4;border-radius:6px;padding:5px 12px;cursor:pointer;font-family:'DM Sans',sans-serif">Cancel</button>
-      </span>
+  <!-- ── Overview cards ── -->
+  <div class="overview-grid" id="overview-grid">
+    <button class="overview-card reveal-el" data-reveal-delay="100" onclick="switchExFromOverview('stress')">
+      <span class="overview-icon">🫙</span>
+      <span class="overview-name">Stress Container</span>
+      <span class="overview-desc">Map your stressors, measure your capacity, and find coping strategies that work.</span>
+      <span class="overview-arrow">→</span>
+    </button>
+    <button class="overview-card reveal-el" data-reveal-delay="220" onclick="switchExFromOverview('wheel')">
+      <span class="overview-icon">⭕</span>
+      <span class="overview-name">Wheel of Life</span>
+      <span class="overview-desc">Score eight areas of your life and reflect on where to focus your energy.</span>
+      <span class="overview-arrow">→</span>
+    </button>
+    <button class="overview-card reveal-el" data-reveal-delay="340" onclick="switchExFromOverview('thoughts')">
+      <span class="overview-icon">⚖️</span>
+      <span class="overview-name">Thoughts on Trial</span>
+      <span class="overview-desc">Challenge unhelpful thoughts by weighing evidence for and against them.</span>
+      <span class="overview-arrow">→</span>
+    </button>
+    <button class="overview-card reveal-el" data-reveal-delay="460" onclick="switchExFromOverview('wellbeing')">
+      <span class="overview-icon">🌱</span>
+      <span class="overview-name">Wellbeing Tips</span>
+      <span class="overview-desc">Explore eight pillars of wellbeing with practical, research-backed techniques.</span>
+      <span class="overview-arrow">→</span>
+    </button>
+  </div>
+
+  <div class="ex-tab-bar-wrap" style="display:none">
+    <button class="ex-tab-scroll-btn ex-tab-scroll-left hidden" id="ex-tab-scroll-left" onclick="scrollExTabs(-1)" aria-label="Scroll tabs left">‹</button>
+    <div class="ex-tab-bar" id="ex-tab-bar-inner">
+      <button class="ex-tab active" id="tab-overview" onclick="switchEx('overview',this)">📋 Overview</button>
+      <button class="ex-tab" onclick="switchEx('stress',this)">🫙 Stress Container</button>
+      <button class="ex-tab" onclick="switchEx('wheel',this)">⭕ Wheel of Life</button>
+      <button class="ex-tab" onclick="switchEx('thoughts',this)">⚖️ Thoughts on Trial</button>
+      <button class="ex-tab" onclick="switchEx('wellbeing',this)">🌱 Wellbeing Tips</button>
+      <button class="ex-tab tc-collectibles-tab" onclick="switchEx('collectibles',this)" data-tc-tab="">✦ Collectibles <span id="tc-tab-badge" style="background:#c8882a;color:#1a0f02;font-size:9px;font-weight:700;padding:1px 6px;border-radius:8px;margin-left:3px;vertical-align:middle">0/16</span></button>
+      <div style="margin-left:auto;display:flex;align-items:center;padding-bottom:2px">
+        <button id="tc-reset-btn" onclick="tcResetConfirm()" style="font-size: 11px; color: rgb(153, 153, 153); background: none; border: 1px solid rgb(208, 204, 196); border-radius: 6px; padding: 5px 12px; cursor: pointer; transition: color 0.15s, border-color 0.15s; font-family: &quot;DM Sans&quot;, sans-serif;" onmouseover="this.style.color='#c83535';this.style.borderColor='#c83535'" onmouseout="this.style.color='#999';this.style.borderColor='#d0ccc4'">↺ Reset all progress</button>
+        <span id="tc-reset-confirm" style="display:none;align-items:center;gap:6px">
+          <span style="font-size:11px;color:#c83535;font-weight:600;font-family:'DM Sans',sans-serif">Are you sure?</span>
+          <button onclick="tcResetExecute()" style="font-size:11px;color:#fff;background:#c83535;border:none;border-radius:6px;padding:5px 12px;cursor:pointer;font-family:'DM Sans',sans-serif">Yes, reset</button>
+          <button onclick="tcResetCancel()" style="font-size:11px;color:#666;background:none;border:1px solid #d0ccc4;border-radius:6px;padding:5px 12px;cursor:pointer;font-family:'DM Sans',sans-serif">Cancel</button>
+        </span>
+      </div>
     </div>
+    <button class="ex-tab-scroll-btn ex-tab-scroll-right" id="ex-tab-scroll-right" onclick="scrollExTabs(1)" aria-label="Scroll tabs right">›</button>
   </div>
 
   <!-- ════ PANEL 1: STRESS CONTAINER ════ -->
-  <div class="ex-panel active" id="ex-stress">
+  <div class="ex-panel" id="ex-stress">
 
     <!-- ── Step 0: Walkthrough intro ── -->
     <div id="sc-intro" class="ex-wt">
@@ -1560,7 +1667,7 @@ input:focus, textarea:focus, select:focus {
                 <span id="sc-sz-hint" style="font-size:10.5px;color:var(--muted);font-style:italic">medium impact</span>
               </div>
               <div class="stressor-input-row">
-                <input type="text" id="sc-stressor-input" placeholder="What's stressing you? Press Enter or Add" onkeydown="if(event.key==='Enter')scAddStressor()">
+                <input type="text" id="sc-stressor-input" placeholder="What's stressing you? Press Enter or Add" aria-label="Add a stressor" onkeydown="if(event.key==='Enter')scAddStressor()">
                 <button class="ex-btn primary" onclick="scAddStressor()">Add</button>
               </div>
             </div>
@@ -1643,7 +1750,7 @@ input:focus, textarea:focus, select:focus {
           <div class="sc-s5-left">
             <div class="sc-palette-label">Add your own strategies</div>
             <div class="coping-input-row" style="margin-bottom:14px">
-              <input type="text" id="sc-hcope-input" placeholder="Type a strategy and press Enter or Add…" onkeydown="if(event.key==='Enter')scAddCustomStrategy()">
+              <input type="text" id="sc-hcope-input" placeholder="Type a strategy and press Enter or Add…" aria-label="Add a coping strategy" onkeydown="if(event.key==='Enter')scAddCustomStrategy()">
               <button class="ex-btn" onclick="scAddCustomStrategy()">Add</button>
             </div>
             <div class="sc-palette-label">Suggested strategies: drag or click to add</div>
@@ -1958,7 +2065,7 @@ input:focus, textarea:focus, select:focus {
         Based on <strong>Cognitive-Behavioural Therapy</strong>. Write your unhelpful thought, add evidence FOR and AGAINST it, watch the scales tip, then write a more balanced thought.
       </div>
       <div class="thoughts-layout">
-        <p style="font-size:13px;font-weight:500;color:var(--green-dark);margin-bottom:6px">Here is my unhelpful thought…</p>
+        <label for="th-neg" style="font-size:13px;font-weight:500;color:var(--green-dark);margin-bottom:6px;display:block">Here is my unhelpful thought…</label>
         <input type="text" class="thought-input-main" id="th-neg" placeholder="e.g. No one likes me" oninput="thSave()">
 
         <p style="font-size:12px;font-weight:600;text-align:center;text-transform:uppercase;letter-spacing:.1em;color:var(--muted);margin-bottom:12px">Weigh up the evidence</p>
@@ -1998,7 +2105,7 @@ input:focus, textarea:focus, select:focus {
           <div class="ev-col for-col">
             <h4>Evidence FOR</h4>
             <div class="ev-input-row">
-              <input type="text" id="th-for-input" placeholder="Add evidence…" onkeydown="if(event.key==='Enter')thAddEvidence('for')">
+              <input type="text" id="th-for-input" placeholder="Add evidence…" aria-label="Add evidence for this thought" onkeydown="if(event.key==='Enter')thAddEvidence('for')">
               <button class="ex-btn" onclick="thAddEvidence('for')">Add</button>
             </div>
             <div class="ev-chips" id="th-for-chips"></div>
@@ -2006,7 +2113,7 @@ input:focus, textarea:focus, select:focus {
           <div class="ev-col against-col">
             <h4>Evidence AGAINST</h4>
             <div class="ev-input-row">
-              <input type="text" id="th-against-input" placeholder="Add evidence…" onkeydown="if(event.key==='Enter')thAddEvidence('against')">
+              <input type="text" id="th-against-input" placeholder="Add evidence…" aria-label="Add evidence against this thought" onkeydown="if(event.key==='Enter')thAddEvidence('against')">
               <button class="ex-btn" onclick="thAddEvidence('against')">Add</button>
             </div>
             <div class="ev-chips" id="th-against-chips"></div>
@@ -2034,7 +2141,7 @@ input:focus, textarea:focus, select:focus {
   <!-- ════ PANEL 4: WORKPLACE WELLBEING ════ -->
   <div class="ex-panel" id="ex-wellbeing" style="padding:32px 40px 60px;max-width:100%;box-sizing:border-box">
 
-  <div class="section-label">Wellbeing pillars: select to explore</div>
+  <div class="section-label reveal-el">Wellbeing pillars: select to explore</div>
 
   <!-- Root node -->
   <div class="tree-root-row">
@@ -2048,7 +2155,7 @@ input:focus, textarea:focus, select:focus {
 
     <div class="pillar-col">
       <div class="pillar-stem-top"></div>
-      <button class="pillar-btn" id="btn-nature" style="--pb:var(--nature-bg);--pc:var(--nature-dark,#27500A);--pborder:var(--nature-bd)" onclick="toggle('nature')">
+      <button class="pillar-btn reveal-el" id="btn-nature" style="--pb:var(--nature-bg);--pc:var(--nature-dark,#27500A);--pborder:var(--nature-bd)" onclick="toggle('nature')">
         <span class="pillar-icon">🌿</span>
         <span class="pillar-label" style="color:var(--green-dark)">Nature</span>
       </button>
@@ -2057,7 +2164,7 @@ input:focus, textarea:focus, select:focus {
 
     <div class="pillar-col">
       <div class="pillar-stem-top"></div>
-      <button class="pillar-btn" id="btn-sleep" style="--pb:#EEEDFE;--pborder:#AFA9EC" onclick="toggle('sleep')">
+      <button class="pillar-btn reveal-el" id="btn-sleep" style="--pb:#EEEDFE;--pborder:#AFA9EC" onclick="toggle('sleep')">
         <span class="pillar-icon">🌙</span>
         <span class="pillar-label" style="color:#3C3489">Sleep</span>
       </button>
@@ -2066,7 +2173,7 @@ input:focus, textarea:focus, select:focus {
 
     <div class="pillar-col">
       <div class="pillar-stem-top"></div>
-      <button class="pillar-btn" id="btn-community" style="--pb:#FBEAF0;--pborder:#ED93B1" onclick="toggle('community')">
+      <button class="pillar-btn reveal-el" id="btn-community" style="--pb:#FBEAF0;--pborder:#ED93B1" onclick="toggle('community')">
         <span class="pillar-icon">🤝</span>
         <span class="pillar-label" style="color:#72243E">Community</span>
       </button>
@@ -2075,7 +2182,7 @@ input:focus, textarea:focus, select:focus {
 
     <div class="pillar-col">
       <div class="pillar-stem-top"></div>
-      <button class="pillar-btn" id="btn-movement" style="--pb:#FFF8E6;--pborder:#EF9F27" onclick="toggle('movement')">
+      <button class="pillar-btn reveal-el" id="btn-movement" style="--pb:#FFF8E6;--pborder:#EF9F27" onclick="toggle('movement')">
         <span class="pillar-icon">🏃</span>
         <span class="pillar-label" style="color:#633806">Movement</span>
       </button>
@@ -2084,7 +2191,7 @@ input:focus, textarea:focus, select:focus {
 
     <div class="pillar-col">
       <div class="pillar-stem-top"></div>
-      <button class="pillar-btn" id="btn-gratitude" style="--pb:#E6F1FB;--pborder:#85B7EB" onclick="toggle('gratitude')">
+      <button class="pillar-btn reveal-el" id="btn-gratitude" style="--pb:#E6F1FB;--pborder:#85B7EB" onclick="toggle('gratitude')">
         <span class="pillar-icon">🙏</span>
         <span class="pillar-label" style="color:#0C447C">Gratitude</span>
       </button>
@@ -2093,7 +2200,7 @@ input:focus, textarea:focus, select:focus {
 
     <div class="pillar-col">
       <div class="pillar-stem-top"></div>
-      <button class="pillar-btn" id="btn-breaks" style="--pb:#E1F5EE;--pborder:#5DCAA5" onclick="toggle('breaks')">
+      <button class="pillar-btn reveal-el" id="btn-breaks" style="--pb:#E1F5EE;--pborder:#5DCAA5" onclick="toggle('breaks')">
         <span class="pillar-icon">☕</span>
         <span class="pillar-label" style="color:#085041">Breaks</span>
       </button>
@@ -2102,7 +2209,7 @@ input:focus, textarea:focus, select:focus {
 
     <div class="pillar-col">
       <div class="pillar-stem-top"></div>
-      <button class="pillar-btn" id="btn-diet" style="--pb:#FAECE7;--pborder:#F0997B" onclick="toggle('diet')">
+      <button class="pillar-btn reveal-el" id="btn-diet" style="--pb:#FAECE7;--pborder:#F0997B" onclick="toggle('diet')">
         <span class="pillar-icon">🥗</span>
         <span class="pillar-label" style="color:#712B13">Diet</span>
       </button>
@@ -2111,7 +2218,7 @@ input:focus, textarea:focus, select:focus {
 
     <div class="pillar-col">
       <div class="pillar-stem-top"></div>
-      <button class="pillar-btn" id="btn-support" style="--pb:#fef3eb;--pborder:#f4b882" onclick="toggle('support')">
+      <button class="pillar-btn reveal-el" id="btn-support" style="--pb:#fef3eb;--pborder:#f4b882" onclick="toggle('support')">
         <span class="pillar-icon">🤍</span>
         <span class="pillar-label" style="color:#9c4a06">Support</span>
       </button>
@@ -3755,11 +3862,51 @@ input:focus, textarea:focus, select:focus {
 function switchEx(id, btn) {
   document.querySelectorAll('.ex-panel').forEach(p => p.classList.remove('active'));
   document.querySelectorAll('.ex-tab').forEach(t => t.classList.remove('active'));
-  document.getElementById('ex-'+id).classList.add('active');
+  var overviewGrid = document.getElementById('overview-grid');
+  var tabBarWrap = document.querySelector('.ex-tab-bar-wrap');
+  if (id === 'overview') {
+    if (overviewGrid) {
+      overviewGrid.style.display = '';
+      overviewGrid.classList.remove('animating');
+      void overviewGrid.offsetWidth;
+      overviewGrid.classList.add('animating');
+    }
+    if (tabBarWrap) tabBarWrap.style.display = 'none';
+  } else {
+    if (overviewGrid) overviewGrid.style.display = 'none';
+    if (tabBarWrap) tabBarWrap.style.display = 'flex';
+    document.getElementById('ex-'+id).classList.add('active');
+    updateTabScrollArrows();
+  }
   btn.classList.add('active');
   var fab = document.getElementById('support-fab');
   if (fab) fab.classList.add('visible');
 }
+
+function scrollExTabs(dir) {
+  var bar = document.getElementById('ex-tab-bar-inner');
+  if (!bar) return;
+  bar.scrollBy({ left: dir * 150, behavior: 'smooth' });
+}
+
+function updateTabScrollArrows() {
+  var bar = document.getElementById('ex-tab-bar-inner');
+  var left = document.getElementById('ex-tab-scroll-left');
+  var right = document.getElementById('ex-tab-scroll-right');
+  if (!bar || !left || !right) return;
+  var atLeft = bar.scrollLeft <= 4;
+  var atRight = bar.scrollLeft + bar.clientWidth >= bar.scrollWidth - 4;
+  left.classList.toggle('hidden', atLeft);
+  right.classList.toggle('hidden', atRight);
+}
+
+(function() {
+  var bar = document.getElementById('ex-tab-bar-inner');
+  if (bar) {
+    bar.addEventListener('scroll', updateTabScrollArrows);
+    window.addEventListener('resize', updateTabScrollArrows);
+  }
+})();
 
 /* ════════════════════════════════════
    STRESS CONTAINER
@@ -3998,7 +4145,7 @@ function scRenderChips() {
     div.ondragstart = function(e) { e.dataTransfer.setData('text/plain', i); div.classList.add('dragging'); };
     div.ondragend = function() { div.classList.remove('dragging'); };
     var btn = document.createElement('button');
-    btn.className = 'chip-remove'; btn.textContent = '×';
+    btn.className = 'chip-remove'; btn.textContent = '×'; btn.setAttribute('aria-label', 'Remove ' + text);
     (function(idx){ btn.onclick = function() { scStressors.splice(idx,1); scRenderChips(); scUpdateFill2(); scSave(); }; })(i);
     div.appendChild(btn);
     area.appendChild(div);
@@ -4055,7 +4202,7 @@ function scRenderDropzone() {
     span.textContent = s.text;
     chip.appendChild(span);
     var btn = document.createElement('button');
-    btn.className = 'chip-remove'; btn.textContent = '×';
+    btn.className = 'chip-remove'; btn.textContent = '×'; btn.setAttribute('aria-label', 'Remove ' + s.text);
     (function(idx, isPreset){
       btn.onclick = function() {
         scSelectedStrategies.splice(idx, 1);
@@ -4123,7 +4270,7 @@ function scRenderCustomTactics() {
   if (!area) return;
   area.innerHTML = '';
   scCustomTactics.forEach(function(t, i) {
-    area.innerHTML += '<div class="coping-chip helpful-chip"><span>'+escHtmlSC(t)+'</span><button class="chip-remove" onclick="scCustomTactics.splice('+i+',1);scRenderCustomTactics();scSave()">×</button></div>';
+    area.innerHTML += '<div class="coping-chip helpful-chip"><span>'+escHtmlSC(t)+'</span><button class="chip-remove" aria-label="Remove '+escHtmlSC(t)+'" onclick="scCustomTactics.splice('+i+',1);scRenderCustomTactics();scSave()">×</button></div>';
   });
   // Sync suggested tactic button states
   document.querySelectorAll('.sc-sugg-tactic').forEach(function(btn) {
@@ -4435,10 +4582,10 @@ function thRenderChips() {
   fc.innerHTML = '';
   ac.innerHTML = '';
   thFor.forEach(function(e,i){
-    fc.innerHTML += '<div class="ev-chip for-chip"><span>'+escHtml(e)+'</span><button class="chip-remove" onclick="thFor.splice('+i+',1);thRenderChips();thUpdateScales();thSave()">×</button></div>';
+    fc.innerHTML += '<div class="ev-chip for-chip"><span>'+escHtml(e)+'</span><button class="chip-remove" aria-label="Remove '+escHtml(e)+'" onclick="thFor.splice('+i+',1);thRenderChips();thUpdateScales();thSave()">×</button></div>';
   });
   thAgainst.forEach(function(e,i){
-    ac.innerHTML += '<div class="ev-chip against-chip"><span>'+escHtml(e)+'</span><button class="chip-remove" onclick="thAgainst.splice('+i+',1);thRenderChips();thUpdateScales();thSave()">×</button></div>';
+    ac.innerHTML += '<div class="ev-chip against-chip"><span>'+escHtml(e)+'</span><button class="chip-remove" aria-label="Remove '+escHtml(e)+'" onclick="thAgainst.splice('+i+',1);thRenderChips();thUpdateScales();thSave()">×</button></div>';
   });
 }
 
@@ -4770,8 +4917,8 @@ function scAnimFill5(targetH, snap) {
 <div class="support-section-always" style="background:linear-gradient(135deg,#fef3eb 0%,#fde8d4 100%);padding:40px 40px 48px;border-bottom:0.5px solid #e0ddd5">
   <div style="max-width:680px;margin:0 auto">
     <div style="background:#fff;border-radius:14px;padding:24px 28px;border:1.5px solid var(--green-border);box-shadow:0 2px 12px rgba(0,0,0,0.06)">
-      <p style="font-size:17px;font-weight:600;color:var(--green-dark);margin-bottom:8px">🤍 If anything raised difficult feelings, support is available</p>
-      <p style="font-size:13.5px;color:var(--muted);margin-bottom:14px;line-height:1.6">These exercises can surface feelings that are hard to sit with alone. That is completely normal. You don't have to work through it by yourself. Confidential, professional support is available to you right now.</p>
+      <p class="reveal-el" style="font-size:17px;font-weight:600;color:var(--green-dark);margin-bottom:8px">🤍 If anything raised difficult feelings, support is available</p>
+      <p class="reveal-el" style="font-size:13.5px;color:var(--muted);margin-bottom:14px;line-height:1.6">These exercises can surface feelings that are hard to sit with alone. That is completely normal. You don't have to work through it by yourself. Confidential, professional support is available to you right now.</p>
       <div style="display:flex;gap:18px;align-items:center;margin-bottom:14px">
         <div style="display:flex;flex-direction:column;gap:8px;flex:1">
         <a href="https://team.effem.com/sites/AAP" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:6px;font-size:13.5px;font-weight:500;color:var(--green-dark);text-decoration:none;padding:12px 16px;background:var(--green-light);border-radius:8px;border:1px solid var(--green-border)">🌍 Global Associate Assistance Programme (AAP) →</a>
@@ -4788,10 +4935,10 @@ function scAnimFill5(targetH, snap) {
 </div>
 
 <!-- ── Floating support button + modal ── -->
-<button class="support-fab" id="support-fab" onclick="document.getElementById('support-modal').classList.add('open')">🤍 Need support?</button>
+<button class="support-fab" id="support-fab" onclick="document.getElementById('support-modal').classList.add('open')" aria-label="Need support? Open support resources">🤍 Need support?</button>
 <div class="support-modal-overlay" id="support-modal" onclick="if(event.target===this)this.classList.remove('open')">
   <div class="support-modal">
-    <button class="support-modal-close" onclick="document.getElementById('support-modal').classList.remove('open')">×</button>
+    <button class="support-modal-close" onclick="document.getElementById('support-modal').classList.remove('open')" aria-label="Close support modal">×</button>
     <p style="font-size:16px;font-weight:600;color:var(--green-dark);margin-bottom:8px">🤍 Support is available</p>
     <p style="font-size:13px;color:var(--muted);margin-bottom:14px">If anything in these exercises has raised difficult feelings, that is completely normal. You don't have to work through it alone. Confidential, professional support is available to you right now.</p>
     <div style="display:flex;flex-direction:column;gap:8px;margin-bottom:14px">
@@ -5021,23 +5168,19 @@ function tcResetExecute() {
 function openPrivacySupport() {
   var dd = document.getElementById('privacy-support-dropdown');
   var arrow = document.getElementById('privacy-toggle-arrow');
-  var label = document.getElementById('privacy-toggle-label');
   if (!dd) return;
   dd.style.maxHeight = dd.scrollHeight + 'px';
   dd.style.opacity = '1';
   if (arrow) arrow.style.transform = 'rotate(180deg)';
-  if (label) label.textContent = '🤍 Hide support resources';
   dd.setAttribute('data-open', '1');
 }
 function closePrivacySupport() {
   var dd = document.getElementById('privacy-support-dropdown');
   var arrow = document.getElementById('privacy-toggle-arrow');
-  var label = document.getElementById('privacy-toggle-label');
   if (!dd) return;
   dd.style.maxHeight = '0';
   dd.style.opacity = '0';
   if (arrow) arrow.style.transform = 'rotate(0deg)';
-  if (label) label.textContent = '🤍 Show support resources';
   dd.removeAttribute('data-open');
 }
 function togglePrivacySupport() {
@@ -5051,25 +5194,26 @@ tcLoad();
 document.addEventListener('DOMContentLoaded', function() {
   var fab = document.getElementById('support-fab');
   if (fab) {
-    fab.classList.add('visible', 'breathing');
-    setTimeout(function() { fab.classList.remove('breathing'); }, 5000);
-    var supportSection = document.querySelector('.support-section-always');
-    var privacyBanner = document.getElementById('privacy-banner');
-    if ('IntersectionObserver' in window) {
-      var breatheTargets = [supportSection, privacyBanner].filter(Boolean);
-      var breatheVisible = new Set();
-      var obs = new IntersectionObserver(function(entries) {
-        entries.forEach(function(e) {
-          if (e.isIntersecting) breatheVisible.add(e.target);
-          else breatheVisible.delete(e.target);
-        });
-        if (breatheVisible.size > 0) fab.classList.add('breathing');
-        else fab.classList.remove('breathing');
-      }, { threshold: 0.2 });
-      breatheTargets.forEach(function(t) { obs.observe(t); });
+    fab.classList.add('visible', 'fab-entering');
+    setTimeout(function() { fab.classList.remove('fab-entering'); }, 500);
+
+    var fabScrollTimer;
+    function updateFabBreathe() {
+      var scrollTop = window.scrollY || document.documentElement.scrollTop;
+      var docHeight = document.documentElement.scrollHeight;
+      var winHeight = window.innerHeight;
+      var nearTop = scrollTop < 150;
+      var nearBottom = scrollTop + winHeight > docHeight - 150;
+      if (nearTop || nearBottom) fab.classList.add('breathing');
+      else fab.classList.remove('breathing');
     }
+    window.addEventListener('scroll', function() {
+      if (fabScrollTimer) cancelAnimationFrame(fabScrollTimer);
+      fabScrollTimer = requestAnimationFrame(updateFabBreathe);
+    }, { passive: true });
+    updateFabBreathe();
   }
-  // Auto-open privacy support dropdown after 1s, and when scrolling to top
+  // Auto-open privacy support dropdown after 1s (no re-open on scroll)
   var privacyDropdown = document.getElementById('privacy-support-dropdown');
   if (privacyDropdown) {
     setTimeout(function() {
@@ -5077,11 +5221,6 @@ document.addEventListener('DOMContentLoaded', function() {
         openPrivacySupport();
       }
     }, 1000);
-    window.addEventListener('scroll', function() {
-      if (window.scrollY === 0 && document.getElementById('privacy-banner') && !document.getElementById('privacy-banner').classList.contains('privacy-hidden')) {
-        openPrivacySupport();
-      }
-    });
   }
 
   tcInitGrid();
@@ -5443,4 +5582,316 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
 
+<style>
+/* ══ UI/UX Quality & Accessibility Fixes ══ */
+
+/* Focus-visible: branded focus ring for keyboard navigation */
+:focus-visible {
+  outline: 2px solid var(--green-mid);
+  outline-offset: 2px;
+}
+/* Inputs already handle their own focus styling via border-color + box-shadow */
+input:focus-visible, textarea:focus-visible, select:focus-visible {
+  outline: none;
+}
+/* High-visibility focus for dark-bg sections */
+.cards-section .filter-btn:focus-visible,
+.cards-section .tc:focus-visible {
+  outline-color: #f5a54d;
+}
+
+/* Reduced motion: respect user system preference */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+  .support-fab.breathing { animation: none !important; }
+  .pillar-btn:hover { transform: none !important; }
+  .tc:hover { transform: none !important; }
+  .sc-anim-drop, .sc-anim-drip { animation: none !important; }
+}
+
+/* Touch targets: minimum 44px interactive areas */
+@media (hover: none) and (pointer: coarse) {
+  .ex-wt-dot {
+    position: relative;
+    min-width: 20px;
+    min-height: 20px;
+    padding: 10px 0;
+    background-clip: content-box;
+  }
+  .chip-remove {
+    min-width: 44px;
+    min-height: 44px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+  }
+  .filter-btn { min-height: 44px; }
+  .ex-header-intro-btn { min-height: 44px; padding: 8px 14px; }
+  .ex-btn { min-height: 44px; }
+  .tc-tick {
+    width: 44px;
+    height: 44px;
+    font-size: 14px;
+  }
+}
+
+/* Support FAB: one-time entrance, then real breathing */
+.support-fab.fab-entering {
+  animation: fab-entrance 0.4s ease-out !important;
+}
+@keyframes fab-entrance {
+  from { opacity: 0; transform: translateY(12px) scale(0.9); }
+  to   { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+/* Empty states for chip containers */
+.stressor-chips:empty::after,
+.ev-chips:empty::after,
+.coping-chips:empty::after {
+  content: 'None added yet';
+  font-size: 12px;
+  color: #bbb;
+  font-style: italic;
+  padding: 4px 0;
+  display: block;
+}
+
+/* Line-length control for readability */
+.support-item-body { max-width: 55ch; }
+.ex-instruction-box { max-width: 72ch; }
+
+/* Detail panel: enable opacity transition */
+.detail-panel {
+  visibility: hidden;
+  max-height: 0;
+  overflow: hidden;
+  transition: opacity 0.25s ease, max-height 0.3s ease, visibility 0.3s;
+}
+.detail-panel.open {
+  visibility: visible;
+  max-height: 4000px;
+  overflow: visible;
+}
+
+/* Hero contrast: ensure eyebrow text readable on gradient */
+.hero-eyebrow { font-weight: 600; }
+
+/* ── Rotating hero word ── */
+.hero-rotate-word {
+  display: inline-block;
+  transition: opacity 0.35s ease, transform 0.35s ease;
+}
+.hero-rotate-word.fading {
+  opacity: 0;
+  transform: translateY(-12px);
+}
+
+/* ── Tab panel entrance animation ── */
+.ex-panel.active {
+  animation: panel-enter 0.25s ease-out;
+}
+.ex-panel.active .ex-step-body,
+.ex-panel.active .ex-wt,
+.ex-panel.active .ex-hero,
+.ex-panel.active .ex-step-header,
+.ex-panel.active .ex-action-bar,
+.ex-panel.active .ex-citation,
+.ex-panel.active .section-label,
+.ex-panel.active .tree-root-row,
+.ex-panel.active .pillars-wrap,
+.ex-panel.active .detail-panel,
+.ex-panel.active .support-card,
+.ex-panel.active .wl-cards,
+.ex-panel.active .ex-tab-bar {
+  animation: panel-child-enter 0.28s ease-out both;
+}
+.ex-panel.active .ex-step-header    { animation-delay: 0.02s; }
+.ex-panel.active .ex-wt             { animation-delay: 0.02s; }
+.ex-panel.active .ex-step-body      { animation-delay: 0.04s; }
+.ex-panel.active .section-label     { animation-delay: 0.02s; }
+.ex-panel.active .tree-root-row     { animation-delay: 0.04s; }
+.ex-panel.active .pillars-wrap      { animation-delay: 0.06s; }
+.ex-panel.active .ex-action-bar     { animation-delay: 0.08s; }
+.ex-panel.active .ex-citation       { animation-delay: 0.1s; }
+@keyframes panel-enter {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+@keyframes panel-child-enter {
+  from { opacity: 0; transform: translateY(12px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* Overview grid entrance when returning to overview */
+.overview-grid.animating .overview-card {
+  animation: panel-child-enter 0.4s ease-out both;
+}
+.overview-grid.animating .overview-card:nth-child(1) { animation-delay: 0.06s; }
+.overview-grid.animating .overview-card:nth-child(2) { animation-delay: 0.14s; }
+.overview-grid.animating .overview-card:nth-child(3) { animation-delay: 0.22s; }
+.overview-grid.animating .overview-card:nth-child(4) { animation-delay: 0.30s; }
+
+/* ── Scroll-reveal animations ── */
+.reveal-el {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+.reveal-el.revealed {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ── Overview cards ── */
+.overview-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+  padding: 0 32px 32px;
+  max-width: 900px;
+  margin: 0 auto;
+}
+.overview-card {
+  background: var(--white);
+  border: 1.5px solid #e0ddd5;
+  border-radius: 14px;
+  padding: 28px 20px 22px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 8px;
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s;
+  font-family: 'DM Sans', sans-serif;
+  position: relative;
+  overflow: hidden;
+}
+.overview-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 32px rgba(156,74,6,0.12);
+  border-color: var(--green-border);
+}
+.overview-card:active {
+  transform: translateY(-1px);
+}
+.overview-icon {
+  font-size: 36px;
+  display: block;
+  margin-bottom: 4px;
+}
+.overview-name {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--green-dark);
+  letter-spacing: -0.01em;
+}
+.overview-desc {
+  font-size: 12px;
+  color: var(--muted);
+  line-height: 1.55;
+  flex: 1;
+}
+.overview-arrow {
+  font-size: 18px;
+  color: var(--green-mid);
+  font-weight: 600;
+  opacity: 0;
+  transform: translateX(-4px);
+  transition: opacity 0.2s, transform 0.2s;
+  margin-top: 4px;
+}
+.overview-card:hover .overview-arrow {
+  opacity: 1;
+  transform: translateX(0);
+}
+@media (max-width: 900px) {
+  .overview-grid { grid-template-columns: repeat(2, 1fr); gap: 12px; padding: 0 16px 24px; }
+}
+@media (max-width: 520px) {
+  .overview-grid { grid-template-columns: 1fr 1fr; gap: 10px; padding: 0 12px 20px; }
+  .overview-card { padding: 20px 14px 16px; }
+  .overview-icon { font-size: 28px; }
+  .overview-name { font-size: 13px; }
+  .overview-desc { font-size: 11px; }
+}
+</style>
+
+<script>
+/* ── Scroll-reveal: elements with .reveal-el pop in as they enter viewport ── */
+(function() {
+  var els = document.querySelectorAll('.reveal-el');
+  if (!els.length) return;
+  if (!('IntersectionObserver' in window)) {
+    els.forEach(function(el) { el.classList.add('revealed'); });
+    return;
+  }
+  var delay = 0;
+  var observer = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (!entry.isIntersecting) return;
+      var el = entry.target;
+      var d = parseInt(el.dataset.revealDelay || '0', 10);
+      setTimeout(function() { el.classList.add('revealed'); }, d);
+      observer.unobserve(el);
+    });
+  }, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
+  els.forEach(function(el, i) {
+    if (!el.dataset.revealDelay) el.dataset.revealDelay = String(i * 80);
+    observer.observe(el);
+  });
+})();
+
+/* ── Overview card click → switch to that exercise tab ── */
+function switchExFromOverview(id) {
+  var tabMap = { stress: 0, wheel: 1, thoughts: 2, wellbeing: 3 };
+  var tabs = document.querySelectorAll('.ex-tab');
+  var idx = tabMap[id];
+  if (idx === undefined) return;
+  var targetTab = tabs[idx + 1];
+  if (targetTab) {
+    switchEx(id, targetTab);
+    var tabBar = document.querySelector('.ex-tab-bar');
+    var panel = document.getElementById('ex-' + id);
+    if (panel) {
+      var rect = panel.getBoundingClientRect();
+      var offset = rect.top + window.scrollY - (window.innerHeight - rect.height) / 2;
+      if (rect.height > window.innerHeight) offset = rect.top + window.scrollY - 64;
+      window.scrollTo({ top: offset, behavior: 'smooth' });
+    }
+  }
+}
+
+/* ── Rotating hero word: good → energised → supported → good, then 5s loop ── */
+(function() {
+  var el = document.getElementById('hero-rotate-word');
+  if (!el) return;
+  var words = ['good', 'energised', 'supported'];
+  var idx = 0;
+  var firstCycleDone = false;
+
+  function swap() {
+    el.classList.add('fading');
+    setTimeout(function() {
+      idx = (idx + 1) % words.length;
+      el.textContent = words[idx];
+      el.classList.remove('fading');
+      var isBackToStart = (idx === 0);
+      if (!firstCycleDone && isBackToStart) {
+        firstCycleDone = true;
+      }
+      var nextDelay = firstCycleDone ? 5000 : 1000;
+      setTimeout(swap, nextDelay);
+    }, 350);
+  }
+
+  setTimeout(swap, 1500);
+})();
+</script>
 </body></html>
